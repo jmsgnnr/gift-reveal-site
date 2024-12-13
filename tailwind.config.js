@@ -65,14 +65,33 @@ module.exports = {
             from: { height: "var(--radix-accordion-content-height)" },
             to: { height: 0 },
           },
+          fall: {
+            '0%': { 
+              transform: 'translateY(-10vh) rotate(0deg)',
+              opacity: '1'
+            },
+            '100%': { 
+              transform: 'translateY(100vh) rotate(360deg)',
+              opacity: '0'
+            }
+          },
+          'sway-1': {
+            '0%, 100%': { transform: 'translateX(0)' },
+            '50%': { transform: 'translateX(20px)' }
+          },
+          'sway-2': {
+            '0%, 100%': { transform: 'translateX(0)' },
+            '50%': { transform: 'translateX(-20px)' }
+          }
         },
         animation: {
           "accordion-down": "accordion-down 0.2s ease-out",
           "accordion-up": "accordion-up 0.2s ease-out",
+          "fall": "fall 10s linear infinite",
+          "sway-1": "sway-1 3s ease-in-out infinite",
+          "sway-2": "sway-2 3s ease-in-out infinite"
         },
       },
     },
     plugins: [require("tailwindcss-animate")],
   }
-  
-  
