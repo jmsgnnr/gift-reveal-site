@@ -25,3 +25,5 @@ next-env.d.ts
 # IDE and editor files
 .vscode/
 .idea/
+
+package-lock.json
