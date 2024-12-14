@@ -50,6 +50,7 @@ export default function GiftReveal() {
   ]
 
   const accommodationImages = [
+    '/accomodations0.jpg',
     '/accomodations1.jpg',
     '/accomodations2.jpg',
     '/accomodations3.jpg'
@@ -72,11 +73,16 @@ export default function GiftReveal() {
       <div className="flex flex-col items-center relative min-h-[300px]">
         <button
           onClick={() => setIsOpen(true)}
-          className="text-2xl p-8 bg-gradient-to-br from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 
-            text-white rounded-full shadow-lg transform transition-all duration-500 hover:scale-110 
-            border-4 border-yellow-400 animate-bounce relative z-10"
+          className="text-2xl p-8 bg-green-600 hover:bg-green-500 
+            text-white rounded-full shadow-lg transform transition-all duration-500 
+            hover:scale-110 border-4 border-red-500 hover:border-red-400
+            animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
         >
-          🎁 Open Your Gift
+          <span className="flex items-center gap-2">
+            <span className="text-3xl">🎁</span>
+            <span className="font-semibold">Open Gift</span>
+            <span className="text-3xl">🎁</span>
+          </span>
         </button>
       </div>
     )
@@ -89,7 +95,7 @@ export default function GiftReveal() {
         
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-center text-white">
-            {showAccommodation ? "Where We're Staying" : "Nosotros vamos a Yucatan!"}
+            {showAccommodation ? "Where are we staying?!" : "🛬Nosotros vamos a Bacalar🍹"}
           </h2>
           
           <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '56.25%' }}>
@@ -125,7 +131,7 @@ export default function GiftReveal() {
           </div>
           
           <p className="text-center text-xl font-medium text-white">
-            {showAccommodation ? "Our cozy home away from home!" : "We're going to BACALAR!"}
+            {showAccommodation ? "Maravilla Bacalar: A boutique hotel with a private palapa and dock" : "💕2/14 -> 2/17💕"}
           </p>
           
           <div className="flex justify-center space-x-4">

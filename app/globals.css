@@ -1,6 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+@keyframes writeText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-write-first {
+  animation: writeText 1s forwards ease-out;
+}
+
+.animate-write-second {
+  animation: writeText 1s forwards ease-out;
+  animation-delay: 0.5s;
+}
  
 @layer base {
   :root {

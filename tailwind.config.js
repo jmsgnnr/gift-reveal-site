@@ -82,6 +82,16 @@ module.exports = {
           'sway-2': {
             '0%, 100%': { transform: 'translateX(0)' },
             '50%': { transform: 'translateX(-20px)' }
+          },
+          writeText: {
+            'from': {
+              opacity: '0',
+              transform: 'translateY(20px)'
+            },
+            'to': {
+              opacity: '1',
+              transform: 'translateY(0)'
+            }
           }
         },
         animation: {
@@ -89,7 +99,9 @@ module.exports = {
           "accordion-up": "accordion-up 0.2s ease-out",
           "fall": "fall 10s linear infinite",
           "sway-1": "sway-1 3s ease-in-out infinite",
-          "sway-2": "sway-2 3s ease-in-out infinite"
+          "sway-2": "sway-2 3s ease-in-out infinite",
+          'write-first': 'writeText 1s forwards ease-out',
+          'write-second': 'writeText 1s forwards ease-out 0.5s'
         },
       },
     },

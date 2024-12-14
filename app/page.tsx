@@ -55,7 +55,7 @@ export default function Home() {
           <span className="text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] block">
             Merry Christmas,
           </span>
-          <span className="text-yellow-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] block mt-2">
+          <span className="text-yellow-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] block mt-2">
             baby!
           </span>
         </h1>
