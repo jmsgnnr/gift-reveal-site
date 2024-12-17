@@ -25,10 +25,10 @@ const Snowflake = ({ className, style }) => (
 
 const CornerSnowflakes = () => (
   <>
-    <Snowflake className="absolute text-white opacity-80 w-8 h-8 -rotate-45" style={{ left: '1rem', top: '1rem' }} />
-    <Snowflake className="absolute text-white opacity-80 w-8 h-8 rotate-45" style={{ right: '1rem', top: '1rem' }} />
-    <Snowflake className="absolute text-white opacity-80 w-8 h-8 rotate-45" style={{ left: '1rem', bottom: '1rem' }} />
-    <Snowflake className="absolute text-white opacity-80 w-8 h-8 -rotate-45" style={{ right: '1rem', bottom: '1rem' }} />
+    <Snowflake className="absolute text-white opacity-80 w-6 h-6 md:w-8 md:h-8 -rotate-45" style={{ left: '0.5rem', top: '0.5rem' }} />
+    <Snowflake className="absolute text-white opacity-80 w-6 h-6 md:w-8 md:h-8 rotate-45" style={{ right: '0.5rem', top: '0.5rem' }} />
+    <Snowflake className="absolute text-white opacity-80 w-6 h-6 md:w-8 md:h-8 rotate-45" style={{ left: '0.5rem', bottom: '0.5rem' }} />
+    <Snowflake className="absolute text-white opacity-80 w-6 h-6 md:w-8 md:h-8 -rotate-45" style={{ right: '0.5rem', bottom: '0.5rem' }} />
   </>
 )
 
@@ -106,18 +106,19 @@ export default function GiftReveal() {
 
   if (!isOpen) {
     return (
-      <div className="flex flex-col items-center relative min-h-[300px]">
+      <div className="flex flex-col items-center relative min-h-[200px] md:min-h-[300px]">
         <button
           onClick={() => setIsOpen(true)}
-          className="text-2xl p-8 bg-green-600 hover:bg-green-500 
+          className="text-xl md:text-2xl p-6 md:p-8 bg-green-600 hover:bg-green-500 
             text-white rounded-full shadow-lg transform transition-all duration-500 
             hover:scale-110 border-4 border-red-500 hover:border-red-400
-            animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+            animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]
+            active:scale-95 touch-manipulation"
         >
           <span className="flex items-center gap-2">
-            <span className="text-3xl">🎁</span>
+            <span className="text-2xl md:text-3xl">🎁</span>
             <span className="font-semibold">Open Gift</span>
-            <span className="text-3xl">🎁</span>
+            <span className="text-2xl md:text-3xl">🎁</span>
           </span>
         </button>
       </div>
@@ -125,22 +126,22 @@ export default function GiftReveal() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 md:p-4 z-50">
       <MotionDiv 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="bg-green-800/95 backdrop-blur-sm rounded-lg max-w-4xl w-full p-8 relative overflow-hidden"
+        className="bg-green-800/95 backdrop-blur-sm rounded-lg w-full max-w-4xl p-4 md:p-8 relative overflow-hidden"
       >
         <CornerSnowflakes />
         
-        <div className="space-y-8">
-          <h2 className="text-4xl font-bold text-center text-white drop-shadow-lg">
+        <div className="space-y-4 md:space-y-8">
+          <h2 className="text-2xl md:text-4xl font-bold text-center text-white drop-shadow-lg">
             {getTitle()}
           </h2>
           
-          <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '56.25%' }}>
+          <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '75%' }}>
             <AnimatePresence mode="wait">
               <MotionDiv
                 key={currentIndex}
@@ -159,39 +160,41 @@ export default function GiftReveal() {
               </MotionDiv>
             </AnimatePresence>
             {imageError && (
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+              <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-sm md:text-base p-2 text-center">
                 Unable to load image: {currentImages[currentIndex]}
               </div>
             )}
             <div className="absolute inset-y-0 left-0 flex items-center">
               <button
-                className="p-3 bg-red-600 hover:bg-red-500 text-white rounded-r-full shadow-lg 
-                  transform transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="p-2 md:p-3 bg-red-600 hover:bg-red-500 text-white rounded-r-full shadow-lg 
+                  transform transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-400
+                  active:scale-95 touch-manipulation"
                 onClick={prevImage}
                 aria-label="Previous image"
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
               </button>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center">
               <button
-                className="p-3 bg-red-600 hover:bg-red-500 text-white rounded-l-full shadow-lg 
-                  transform transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="p-2 md:p-3 bg-red-600 hover:bg-red-500 text-white rounded-l-full shadow-lg 
+                  transform transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-400
+                  active:scale-95 touch-manipulation"
                 onClick={nextImage}
                 aria-label="Next image"
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
               </button>
             </div>
           </div>
           
-          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-            <p className="text-center text-xl font-medium text-white drop-shadow">
+          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 md:p-4">
+            <p className="text-center text-base md:text-xl font-medium text-white drop-shadow">
               {getDescription()}
             </p>
           </div>
           
-          <div className="flex justify-center space-x-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {(['tickets', 'accommodation', 'activities'] as const).map((view) => (
               <button
                 key={view}
@@ -200,8 +203,9 @@ export default function GiftReveal() {
                   setCurrentIndex(0)
                   setImageError(false)
                 }}
-                className={`px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
+                className={`px-4 md:px-6 py-2 md:py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
                   transform transition-transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400
+                  active:scale-95 touch-manipulation text-sm md:text-base
                   ${viewState === view ? 'ring-2 ring-white' : ''}`}
               >
                 {view.charAt(0).toUpperCase() + view.slice(1)}
@@ -209,8 +213,9 @@ export default function GiftReveal() {
             ))}
             <button
               onClick={() => setIsOpen(false)}
-              className="px-6 py-3 bg-white hover:bg-gray-100 text-green-800 font-semibold rounded-lg
-                transform transition-transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="px-4 md:px-6 py-2 md:py-3 bg-white hover:bg-gray-100 text-green-800 font-semibold rounded-lg
+                transform transition-transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400
+                active:scale-95 touch-manipulation text-sm md:text-base"
             >
               Close
             </button>
@@ -220,4 +225,3 @@ export default function GiftReveal() {
     </div>
   )
 }
-
