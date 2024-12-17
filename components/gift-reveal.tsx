@@ -59,7 +59,7 @@ export default function GiftReveal() {
   ]
 
   const activityImages = [
-    { src: '/activity-1.jpg', day: 'Friday' },
+    { src: '/activity-1.jpg', day: 'Fridayy' },
     { src: '/activity-2.jpg', day: 'Saturday' },
     { src: '/activity-3.jpg', day: 'Sunday' },
   ]
