@@ -37,9 +37,11 @@ const CornerSnowflakes = () => (
   </>
 )
 
+type ViewState = 'tickets' | 'accommodation' | 'activities'
+
 export default function GiftReveal() {
   const [isOpen, setIsOpen] = useState(false)
-  const [showAccommodation, setShowAccommodation] = useState(false)
+  const [viewState, setViewState] = useState<ViewState>('tickets')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [imageError, setImageError] = useState(false)
 
@@ -56,7 +58,24 @@ export default function GiftReveal() {
     '/accomodations3.jpg'
   ]
 
-  const currentImages = showAccommodation ? accommodationImages : ticketImages
+  const activityImages = [
+    { src: '/activity-1.jpg', day: 'Friday' },
+    { src: '/activity-2.jpg', day: 'Saturday' },
+    { src: '/activity-3.jpg', day: 'Sunday' },
+  ]
+
+  const getCurrentImages = () => {
+    switch (viewState) {
+      case 'tickets':
+        return ticketImages
+      case 'accommodation':
+        return accommodationImages
+      case 'activities':
+        return activityImages.map(item => item.src)
+    }
+  }
+
+  const currentImages = getCurrentImages()
 
   const nextImage = () => {
     setImageError(false)
@@ -66,6 +85,28 @@ export default function GiftReveal() {
   const prevImage = () => {
     setImageError(false)
     setCurrentIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length)
+  }
+
+  const getTitle = () => {
+    switch (viewState) {
+      case 'tickets':
+        return "🛬Nosotros vamos a Bacalar🍹"
+      case 'accommodation':
+        return "Where are we staying?!"
+      case 'activities':
+        return "What Are We Doing?"
+    }
+  }
+
+  const getDescription = () => {
+    switch (viewState) {
+      case 'tickets':
+        return "💕2/14 -> 2/17💕"
+      case 'accommodation':
+        return "Maravilla Bacalar: A boutique hotel with a private palapa and dock"
+      case 'activities':
+        return activityImages[currentIndex].day
+    }
   }
 
   if (!isOpen) {
@@ -95,14 +136,14 @@ export default function GiftReveal() {
         
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-center text-white">
-            {showAccommodation ? "Where are we staying?!" : "🛬Nosotros vamos a Bacalar🍹"}
+            {getTitle()}
           </h2>
           
           <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '56.25%' }}>
             {!imageError && (
               <img
                 src={currentImages[currentIndex]}
-                alt={`${showAccommodation ? 'Accommodation' : 'Plane Tickets'} ${currentIndex + 1}`}
+                alt={`${viewState} ${currentIndex + 1}`}
                 className="absolute inset-0 w-full h-full object-contain transition-all duration-300"
                 onError={() => setImageError(true)}
               />
@@ -131,20 +172,45 @@ export default function GiftReveal() {
           </div>
           
           <p className="text-center text-xl font-medium text-white">
-            {showAccommodation ? "Maravilla Bacalar: A boutique hotel with a private palapa and dock" : "💕2/14 -> 2/17💕"}
+            {getDescription()}
           </p>
           
           <div className="flex justify-center space-x-4">
             <button
               onClick={() => {
-                setShowAccommodation(!showAccommodation)
+                setViewState('tickets')
                 setCurrentIndex(0)
                 setImageError(false)
               }}
-              className="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
-                transform transition-transform hover:scale-105 shadow-lg"
+              className={`px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
+                transform transition-transform hover:scale-105 shadow-lg
+                ${viewState === 'tickets' ? 'ring-2 ring-white' : ''}`}
             >
-              {showAccommodation ? "Back to Tickets" : "Where We're Staying"}
+              Tickets
+            </button>
+            <button
+              onClick={() => {
+                setViewState('accommodation')
+                setCurrentIndex(0)
+                setImageError(false)
+              }}
+              className={`px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
+                transform transition-transform hover:scale-105 shadow-lg
+                ${viewState === 'accommodation' ? 'ring-2 ring-white' : ''}`}
+            >
+              Accommodation
+            </button>
+            <button
+              onClick={() => {
+                setViewState('activities')
+                setCurrentIndex(0)
+                setImageError(false)
+              }}
+              className={`px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg 
+                transform transition-transform hover:scale-105 shadow-lg
+                ${viewState === 'activities' ? 'ring-2 ring-white' : ''}`}
+            >
+              Activities
             </button>
             <button
               onClick={() => setIsOpen(false)}
@@ -159,3 +225,4 @@ export default function GiftReveal() {
     </div>
   )
 }
+
