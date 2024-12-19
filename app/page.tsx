@@ -22,7 +22,15 @@ const DecorativeBorder = () => (
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-600 via-red-700 to-red-900 relative overflow-hidden">
+    <div 
+      className="min-h-screen relative overflow-hidden bg-cover bg-center bg-fixed"
+      style={{ 
+        backgroundImage: 'url(/bg-image-1.jpg)'
+      }}
+    >
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-red-600/90 via-red-700/90 to-red-900/90"></div>
+
       {/* Animated Snowflakes */}
       {[...Array(20)].map((_, i) => (
         <Snowflake
@@ -51,17 +59,22 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <h1 className="mb-8 text-4xl md:text-6xl font-bold text-center">
+        <h1 className="mb-8 text-4xl md:text-6xl font-bold text-center relative z-10">
           <span className="text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] block">
             Merry Christmas,
           </span>
           <span className="text-yellow-300 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] block mt-2">
-            baby!
+            Baby!
           </span>
         </h1>
 
         <div className="relative z-10">
           <GiftReveal />
+          <div className="text-center mt-6">
+            <p style={{ fontFamily: '"Dancing Script", cursive' }} className="text-6xl md:text-6xl text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] animate-write-first opacity-0">
+              I Love You!!!!!
+            </p>
+          </div>
         </div>
 
         {/* Bottom Decorations */}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import dynamic from 'next/dynamic'
 
@@ -106,22 +106,20 @@ export default function GiftReveal() {
 
   if (!isOpen) {
     return (
-      <div className="flex flex-col items-center relative min-h-[200px] md:min-h-[300px]">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="text-xl md:text-2xl p-6 md:p-8 bg-green-600 hover:bg-green-500 
-            text-white rounded-full shadow-lg transform transition-all duration-500 
-            hover:scale-110 border-4 border-red-500 hover:border-red-400
-            animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]
-            active:scale-95 touch-manipulation"
-        >
-          <span className="flex items-center gap-2">
-            <span className="text-2xl md:text-3xl">🎁</span>
-            <span className="font-semibold">Open Gift</span>
-            <span className="text-2xl md:text-3xl">🎁</span>
-          </span>
-        </button>
-      </div>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="text-xl md:text-2xl p-6 md:p-8 bg-green-600 hover:bg-green-500 
+          text-white rounded-full shadow-lg transform transition-all duration-500 
+          hover:scale-110 border-4 border-red-500 hover:border-red-400
+          animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]
+          active:scale-95 touch-manipulation"
+      >
+        <span className="flex items-center gap-2">
+          <span className="text-2xl md:text-3xl">🎁</span>
+          <span className="font-semibold">Open Gift</span>
+          <span className="text-2xl md:text-3xl">🎁</span>
+        </span>
+      </button>
     )
   }
 
@@ -132,16 +130,16 @@ export default function GiftReveal() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="bg-green-800/95 backdrop-blur-sm rounded-lg w-full max-w-4xl p-4 md:p-8 relative overflow-hidden"
+        className="bg-green-800/95 backdrop-blur-sm rounded-lg w-full max-w-3xl p-4 md:p-6 relative overflow-hidden"
       >
         <CornerSnowflakes />
         
-        <div className="space-y-4 md:space-y-8">
+        <div className="space-y-4 md:space-y-6">
           <h2 className="text-2xl md:text-4xl font-bold text-center text-white drop-shadow-lg">
             {getTitle()}
           </h2>
           
-          <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '75%' }}>
+          <div className="relative w-full bg-white rounded-lg overflow-hidden shadow-xl" style={{ paddingTop: '65%' }}>
             <AnimatePresence mode="wait">
               <MotionDiv
                 key={currentIndex}
