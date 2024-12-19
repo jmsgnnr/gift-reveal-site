@@ -106,20 +106,22 @@ export default function GiftReveal() {
 
   if (!isOpen) {
     return (
-      <button
-        onClick={() => setIsOpen(true)}
-        className="text-xl md:text-2xl p-6 md:p-8 bg-green-600 hover:bg-green-500 
-          text-white rounded-full shadow-lg transform transition-all duration-500 
-          hover:scale-110 border-4 border-red-500 hover:border-red-400
-          animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]
-          active:scale-95 touch-manipulation"
-      >
-        <span className="flex items-center gap-2">
-          <span className="text-2xl md:text-3xl">🎁</span>
-          <span className="font-semibold">Open Gift</span>
-          <span className="text-2xl md:text-3xl">🎁</span>
-        </span>
-      </button>
+      <div className="w-full flex justify-center items-center">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="text-xl md:text-2xl p-6 md:p-8 bg-green-600 hover:bg-green-500 
+            text-white rounded-full shadow-lg transform transition-all duration-500 
+            hover:scale-110 border-4 border-red-500 hover:border-red-400
+            animate-bounce relative z-10 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]
+            active:scale-95 touch-manipulation"
+        >
+          <span className="flex items-center gap-2">
+            <span className="text-2xl md:text-3xl">🎁</span>
+            <span className="font-semibold">Open Gift</span>
+            <span className="text-2xl md:text-3xl">🎁</span>
+          </span>
+        </button>
+      </div>
     )
   }
 
